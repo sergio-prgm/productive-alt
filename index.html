@@ -1,31 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   </head>
-  <body>
-    <div
-      id="app"
-      class="flex h-screen flex-col items-center justify-between py-8 text-center text-[#2c3e50] selection:bg-green-100"
-    >
-      <div>
-        <h1
-          class="bg-gradient-to-r from-green-600 to-sky-400 bg-clip-text text-5xl font-black text-transparent selection:bg-transparent"
-        >
-          Hello !
-        </h1>
-        <h3 class="my-4 text-2xl font-bold text-gray-500">
-          Vite + JS + tailwindcss v3
-        </h3>
-        <a href="https://vitejs.dev/guide/features.html" target="_blank"
-          >Documentation</a
-        >
-      </div>
-      <img class="block" src="./src/assets/powered-by-vitawind-bright.png" />
-    </div>
+  <body class="bg-blue-50">
+    <nav class="bg-indigo-500 flex justify-around text-white px-10 p-3">
+        <a href="/" class="nav__link" data-link>Dashboard</a>
+        <a href="/ToDo" class="nav__link" data-link>To-Do</a>
+        <a href="/NoteTaker" class="nav__link"  data-link>Note Taker</a>
+    </nav>
+    <div id="app" class="container mx-auto px-4"></div>
     <script type="module" src="./src/main.js"></script>
+    <script type="module" src="./src/static/js/index.js"></script>
   </body>
 </html>
