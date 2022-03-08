@@ -4,7 +4,8 @@
   "editor.formatOnSave": true,
   "editor.formatOnSaveMode": "file",
   "tailwindCSS.includeLanguages": {
-    "plaintext": "html"
+    "plaintext": "html",
+    "javascript": "javascript"
   },
   "editor.quickSuggestions": {
     "strings": true

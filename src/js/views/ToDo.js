@@ -1,9 +1,9 @@
-import AbstractView from "./AbstractView.js";
+import AbstractView from './AbstractView.js'
 
 export default class extends AbstractView {
   constructor() {
     super()
-    this.setTitle("To-Do")
+    this.setTitle('To-Do')
   }
 
   async getHtml() {
@@ -13,7 +13,7 @@ export default class extends AbstractView {
     <section id="section-input" class="flex justify-center content-center mb-4">
 
       <form id="form">
-      <input type="text" name="item" id="item" placeholder="Añade una nueva tarea" class="form-control px-3 py-1.5 text-base font-normal test-gray-700 bg-white bg-clip-padding border-2 border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none flex-grow" >
+      <input type="text" name="item" id="item" placeholder="Añade una nueva tarea" class="form-control px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border-2 border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-indigo-500 focus:outline-none flex-grow" >
 
       <button id="btn-OK" type="submit"><i class="fa-solid fa-plus text-xl cursor-pointer mx-1 ml-2 p-1 self-center"></i></button>
 
