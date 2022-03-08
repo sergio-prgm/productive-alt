@@ -1,18 +1,18 @@
 export default class ToDoJS {
   async getJS() {
-        //  VARIABLES
+    //  VARIABLES
 
-    const $ = select => document.querySelector(select)
-    const $C = select => document.createElement(select)
+    const $ = (select) => document.querySelector(select)
+    const $C = (select) => document.createElement(select)
 
-    const LIST_DO = $('ul#list-do');
-    const LIST_X = $('ul#list-X');
-    const NEW_ITEM = $('#item');
-    const SECTION_LIST = $('#section-list');
+    const LIST_DO = $('ul#list-do')
+    const LIST_X = $('ul#list-X')
+    const NEW_ITEM = $('#item')
+    // const SECTION_LIST = $('#section-list')
     const FORM = $('form')
     //  Botones de la sección input
-    const BTN_OK = $('button#btn-OK');
-    const BTN_X = $('i#btn-X');    
+    const BTN_OK = $('button#btn-OK')
+    const BTN_X = $('i#btn-X')
 
     //  FUNCIONES
     //  Chequea si hay algo en localStorage
@@ -20,55 +20,56 @@ export default class ToDoJS {
       var localToDo = []
     } else {
       var localToDo = JSON.parse(localStorage.getItem('localToDo'))
-    }
-    window.onload = () => {
       toDoRender(localToDo)
     }
+    // window.onload = () => {
+    //   toDoRender(localToDo)
+    // }
 
     // 🏗 Constuctor de la notas
     function Note(text, isDone) {
-      this.text = text,
-      this.isDone = isDone
+      ;(this.text = text), (this.isDone = isDone)
     }
 
     // 🎮 Crean los botones de los elementos
-    const btnItem = li => {
-      let btnUp = $C('i');
-      btnUp.className = "fa-solid fa-angle-up";
-      li.appendChild(btnUp);
+    const btnItem = (li) => {
+      let btnUp = $C('i')
+      btnUp.className = 'fa-solid fa-angle-up'
+      li.appendChild(btnUp)
 
-      let btnDown = $C('i');
-      btnDown.className = "fa-solid fa-angle-down"
-      li.append(btnDown);
+      let btnDown = $C('i')
+      btnDown.className = 'fa-solid fa-angle-down'
+      li.append(btnDown)
 
-      let btnDel = $C('i');
-      btnDel.className = "fa-solid fa-trash";
-      li.append(btnDel);
+      let btnDel = $C('i')
+      btnDel.className = 'fa-solid fa-trash'
+      li.append(btnDel)
     }
 
     // ♻ Resetea nodos de lista
-    const removeChildren = parent => {
+    const removeChildren = (parent) => {
       while (parent.lastChild) {
         parent.removeChild(parent.lastChild)
       }
     }
     // 🖊 Renderiza el contenido de la lista
     function toDoRender(ToDo) {
-      let isDone = ToDo.filter(elem => elem.isDone)
-      let toDo = ToDo.filter(elem => !elem.isDone)
+      let isDone = ToDo.filter((elem) => elem.isDone)
+      let toDo = ToDo.filter((elem) => !elem.isDone)
       console.log(isDone)
       console.log(toDo)
 
-      isDone.forEach(elem => {
+      isDone.forEach((elem) => {
         let nuevoItemValue = $C('li')
         nuevoItemValue.innerHTML = `
          <span class="text-xl">${elem.text}</span>
         `
-        nuevoItemValue.className = 'flex flex-grow justify-between bg-white mb-2 py-1 px-3 rounded shadow-md'
+        nuevoItemValue.className =
+          'flex flex-grow justify-between bg-white mb-2 py-1 px-3 rounded shadow-md'
         LIST_X.append(nuevoItemValue)
       })
 
-      toDo.forEach(elem => {
+      toDo.forEach((elem) => {
         let nuevoItemValue = $C('li')
         nuevoItemValue.innerHTML = `
          <span class="text-xl">${elem.text}</span>
@@ -78,7 +79,8 @@ export default class ToDoJS {
           <i class="fa-solid fa-trash"></i>
          </div>
         `
-        nuevoItemValue.className = 'flex flex-grow justify-between bg-white mb-2 py-1 px-3 rounded shadow-md'
+        nuevoItemValue.className =
+          'flex flex-grow justify-between bg-white mb-2 py-1 px-3 rounded shadow-md'
         LIST_DO.append(nuevoItemValue)
       })
     }
@@ -90,18 +92,18 @@ export default class ToDoJS {
         alert('La nota debe tener contenido')
         NEW_ITEM.focus()
       } else {
-      e.preventDefault()
-      // let lis = document.querySelectorAll('li')
-      
-      removeChildren(LIST_DO)
-      removeChildren(LIST_X)
-      let note = new Note(NEW_ITEM.value, false)
-      localToDo.push(note)
-      localStorage.setItem('localToDo', JSON.stringify(localToDo))
-      
-      console.log(localToDo)
-      toDoRender(localToDo)
-      NEW_ITEM.value = ''
+        e.preventDefault()
+        // let lis = document.querySelectorAll('li')
+
+        removeChildren(LIST_DO)
+        removeChildren(LIST_X)
+        let note = new Note(NEW_ITEM.value, false)
+        localToDo.push(note)
+        localStorage.setItem('localToDo', JSON.stringify(localToDo))
+
+        console.log(localToDo)
+        toDoRender(localToDo)
+        NEW_ITEM.value = ''
       }
     })
 
@@ -118,7 +120,7 @@ export default class ToDoJS {
     */
 
     BTN_OK.addEventListener('mouseover', () => {
-      BTN_OK.title = 'Agrega el elemento a la lista';
+      BTN_OK.title = 'Agrega el elemento a la lista'
     })
 
     //  resetea por completo la lista
@@ -130,36 +132,41 @@ export default class ToDoJS {
       toDoRender(localToDo)
     })
     BTN_X.addEventListener('mouseover', () => {
-      BTN_X.title = 'Elimina TODOS los elementos';
+      BTN_X.title = 'Elimina TODOS los elementos'
     })
 
     //  acciones de los botones item
     LIST_DO.addEventListener('click', (event) => {
       let eT = event.target
       if (eT.tagName === 'I') {
-        if (eT.className === "fa-solid fa-angle-up") {
-          let div = eT.parentNode;
-          let li = div.parentNode;
-          let prev = li.previousElementSibling;
-          let ul = li.parentNode;
+        if (eT.className === 'fa-solid fa-angle-up') {
+          let div = eT.parentNode
+          let li = div.parentNode
+          let prev = li.previousElementSibling
+          let ul = li.parentNode
           if (prev) {
-            ul.insertBefore(li, prev);
+            ul.insertBefore(li, prev)
           }
         }
-        if (eT.className === "fa-solid fa-angle-down") {
-          let div = eT.parentNode;
-          let li = div.parentNode;
-          let next = li.nextElementSibling;
-          let ul = li.parentNode;
+        if (eT.className === 'fa-solid fa-angle-down') {
+          let div = eT.parentNode
+          let li = div.parentNode
+          let next = li.nextElementSibling
+          let ul = li.parentNode
           if (next) {
-            ul.insertBefore(next, li);
+            ul.insertBefore(next, li)
           }
         }
-        if (eT.className === "fa-solid fa-trash") {
+        if (eT.className === 'fa-solid fa-trash') {
           let li = eT.parentNode.parentNode
           let text = li.firstElementChild.innerText
-          console.log(localToDo.filter(elem => elem.text === text)[0])
-          localToDo.splice(localToDo.indexOf(localToDo.filter(elem => elem.text === text)[0]), 1)
+          console.log(localToDo.filter((elem) => elem.text === text)[0])
+          localToDo.splice(
+            localToDo.indexOf(
+              localToDo.filter((elem) => elem.text === text)[0]
+            ),
+            1
+          )
           localStorage.setItem('localToDo', JSON.stringify(localToDo))
           console.log(localToDo)
           removeChildren(LIST_DO)
@@ -167,9 +174,13 @@ export default class ToDoJS {
           toDoRender(localToDo)
         }
       }
-      if (event.target.tagName === 'SPAN'){
-        let text = eT.parentNode.firstElementChild.innerText
-        localToDo.filter(elem => elem.text === text)[0].isDone = true
+
+      if (event.target.tagName === 'SPAN') {
+        let text = eT.parentNode.firstElementChild.innerHTML
+        console.log(localToDo.filter((elem) => elem.text === text)[0])
+        console.log(`el${eT.parentNode.firstElementChild.innerHTML}`)
+        console.log(localToDo)
+        localToDo.filter((elem) => elem.text === text)[0].isDone = true
         removeChildren(LIST_DO)
         removeChildren(LIST_X)
         toDoRender(localToDo)
@@ -179,22 +190,22 @@ export default class ToDoJS {
     //  evento para que al hacer hover se visualice la propiedad title
     LIST_DO.addEventListener('mouseover', (event) => {
       if (event.target.tagName == 'I') {
-        if (event.target.className == "fa-solid fa-angle-up") {
-          let butt = event.target;
-          butt.title = 'sube el elemento';
+        if (event.target.className == 'fa-solid fa-angle-up') {
+          let butt = event.target
+          butt.title = 'sube el elemento'
         }
-        if (event.target.className == "fa-solid fa-angle-down") {
-          let butt = event.target;
-          butt.title = 'baja el elemento';
+        if (event.target.className == 'fa-solid fa-angle-down') {
+          let butt = event.target
+          butt.title = 'baja el elemento'
         }
-        if (event.target.className == "fa-solid fa-trash") {
-          let butt = event.target;
-          butt.title = '¡CUIDADO! Elimna el elemento';
-        }  
+        if (event.target.className == 'fa-solid fa-trash') {
+          let butt = event.target
+          butt.title = '¡CUIDADO! Elimna el elemento'
+        }
       }
       if (event.target.tagName == 'LI') {
-        let butt = event.target;
-        butt.title = 'Marcar como realizado';
+        let butt = event.target
+        butt.title = 'Marcar como realizado'
       }
     })
   }
